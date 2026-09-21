@@ -1,0 +1,205 @@
+/* ========================================
+   1. GLOBAL / BASIC STYLES
+   ======================================== */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #eff6ff;
+  color: #1f2937;
+}
+
+a {
+  color: #1e3a8a;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+
+/* ========================================
+   2. MAIN CONTENT
+   ======================================== */
+
+#root {
+  min-height: 100vh;
+}
+
+main {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 30px 20px;
+}
+
+
+/* ========================================
+   3. NAVBAR
+   ======================================== */
+
+nav {
+  background-color: #1e3a8a;
+  padding: 16px 20px;
+}
+
+nav a {
+  color: #ffffff;
+  margin-right: 16px;
+}
+
+nav a:hover {
+  color: #eff6ff;
+}
+
+nav button {
+  padding: 8px 14px;
+  background-color: #ffffff;
+  color: #1e3a8a;
+  border: none;
+  border-radius: 4px;
+}
+
+
+/* ========================================
+   4. FORMS
+   ======================================== */
+
+form {
+  max-width: 500px;
+  margin: 30px auto;
+  padding: 24px;
+  background-color: #ffffff;
+  border-radius: 8px;
+}
+
+form div {
+  margin-bottom: 16px;
+}
+
+
+/* ========================================
+   5. FORM LABELS
+   ======================================== */
+
+label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: bold;
+}
+
+
+/* ========================================
+   6. INPUTS AND SELECT
+   ======================================== */
+
+input,
+select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #2563eb;
+  border-radius: 4px;
+  background-color: #ffffff;
+  color: #1f2937;
+}
+
+
+/* ========================================
+   7. INPUT FOCUS
+   ======================================== */
+
+input:focus,
+select:focus {
+  outline: 2px solid #2563eb;
+}
+
+
+/* ========================================
+   8. BUTTONS
+   ======================================== */
+
+form button {
+  padding: 10px 18px;
+  border: none;
+  border-radius: 4px;
+  background-color: #2563eb;
+  color: #ffffff;
+}
+
+form button:hover {
+  background-color: #1e3a8a;
+}
+
+form button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+
+/* ========================================
+   9. HEADINGS
+   ======================================== */
+
+h1 {
+  margin-bottom: 20px;
+  color: #1e3a8a;
+}
+
+h2 {
+  color: #1e3a8a;
+}
+
+
+/* ========================================
+   10. FOOTER
+   ======================================== */
+
+footer {
+  margin-top: 40px;
+  padding: 20px;
+  text-align: center;
+  background-color: #1e3a8a;
+  color: #ffffff;
+}
+
+
+/* ========================================
+   11. MOBILE RESPONSIVE DESIGN
+   ======================================== */
+
+@media (max-width: 600px) {
+
+  nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  nav a {
+    margin-right: 0;
+  }
+
+  form {
+    margin: 20px;
+  }
+
+  main {
+    padding: 20px 15px;
+  }
+
+}
