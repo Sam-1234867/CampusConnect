@@ -2,84 +2,172 @@
 
 CampusConnect is a Smart Student Activity and Attendance Management System.
 
-## Project Purpose
+## Problem Statement
 
-The system helps students, teachers, and administrators manage student activities, attendance, events, and announcements.
+CampusConnect helps students, teachers, and administrators manage attendance, campus events, announcements, and user information in one system.
 
-## Technologies Used
+## Features
 
-* React
-* JavaScript
-* Vite
-* Firebase Authentication
-* Firebase Firestore
-* React Router
-* CSS
+* Student registration and login
+* Teacher and admin login
+* Role-based access
+* Protected routes
+* Student attendance history
+* Teacher attendance management
+* Campus events
+* Event create, edit, and delete
+* Campus announcements
+* Announcement create, edit, and delete
+* Admin user management
+* Form validation
+* Loading and error messages
+* Responsive design
+* 404 page
+* Unauthorized access protection
 
 ## User Roles
 
 ### Student
 
-* View student dashboard
-* View attendance
-* View events
+* Register and login
+* View personal attendance
+* View upcoming events
 * View announcements
+* View student dashboard
 
 ### Teacher
 
+* Login
+* Create attendance sessions
+* Mark student attendance
+* View student attendance records
+* Create, edit, and delete events
+* Create, edit, and delete announcements
 * View teacher dashboard
-* View attendance
-* View events
-* View announcements
 
 ### Admin
 
-* View admin dashboard
+* Login
 * Manage users
-* View user roles
+* Create attendance sessions
+* Mark attendance
+* View attendance records
+* Create, edit, and delete events
+* Create, edit, and delete announcements
+* View admin dashboard
 
-## Main Features
+## Tech Stack
 
-* Email and password authentication
-* Role-based access
-* Protected routes
-* Attendance records
-* Campus events
-* Campus announcements
-* User management
-* Form validation
-* Loading, error, and empty states
-* Responsive design
-* 404 page
-* Unauthorized access page
+* React
+* JavaScript
+* Vite
+* Firebase Authentication
+* Cloud Firestore
+* React Router
+* CSS
+* GitHub
+* Vercel
 
-## Project Structure
+## Architecture / Folder Structure
 
 ```text
 src/
 ├── components/
+│   ├── Navbar.jsx
+│   ├── Footer.jsx
+│   ├── Loader.jsx
+│   └── ProtectedRoute.jsx
+│
 ├── pages/
+│   ├── Login.jsx
+│   ├── Signup.jsx
+│   ├── StudentDashboard.jsx
+│   ├── TeacherDashboard.jsx
+│   ├── AdminDashboard.jsx
+│   ├── Attendance.jsx
+│   ├── Events.jsx
+│   ├── Announcements.jsx
+│   ├── UserManagement.jsx
+│   ├── NotFound.jsx
+│   └── NotAuthorized.jsx
+│
 ├── context/
+│   ├── AuthContext.jsx
+│   └── UserContext.jsx
+│
 ├── services/
+│   ├── firebase.js
+│   └── firestore.js
+│
 ├── styles/
+│   └── Theme.css
+│
 ├── App.jsx
 └── main.jsx
 ```
 
-## Firebase
+## Firebase Collections
 
-Firebase is used for:
+### users
 
-* User authentication
-* Firestore database
-* User information
-* Attendance records
-* Events
-* Announcements
+Stores user information.
 
-## How to Run
+Fields:
 
-Install the project dependencies:
+* name
+* email
+* role
+* status
+* createdAt
+
+### attendanceSessions
+
+Stores attendance sessions.
+
+Fields:
+
+* title
+* date
+* createdBy
+* status
+* createdAt
+
+Attendance records contain:
+
+* studentId
+* status
+* markedBy
+* markedAt
+
+### events
+
+Stores campus events.
+
+Fields:
+
+* title
+* date
+* time
+* location
+* description
+* createdBy
+* createdAt
+
+### announcements
+
+Stores campus announcements.
+
+Fields:
+
+* title
+* message
+* audience
+* createdBy
+* createdAt
+
+## Local Setup
+
+Install the dependencies:
 
 ```bash
 npm install
@@ -91,25 +179,90 @@ Start the development server:
 npm run dev
 ```
 
-Then open the local URL shown in the terminal.
+Build the project:
 
-## Testing
+```bash
+npm run build
+```
 
-The project was tested for:
+## Environment Variables
 
-* Student login
-* Teacher login
-* Admin login
-* Protected routes
+Create a `.env` file in the project root.
+
+Required variables:
+
+```env
+VITE_FIREBASE_API_KEY=
+VITE_FIREBASE_AUTH_DOMAIN=
+VITE_FIREBASE_PROJECT_ID=
+VITE_FIREBASE_STORAGE_BUCKET=
+VITE_FIREBASE_MESSAGING_SENDER_ID=
+VITE_FIREBASE_APP_ID=
+```
+
+The `.env` file must not be committed to GitHub.
+
+Use `.env.example` as the template.
+
+## Test Accounts
+
+### Student
+
+Email: `alikhan.student@gmail.com`
+
+### Teacher
+
+Email: `teacher@campusconnect.com`
+
+### Admin
+
+Email: `admin@campusconnect.com`
+
+Passwords are provided separately for testing and are not stored in this README.
+
+## Deployment
+
+The application is prepared for deployment using Vercel.
+
+Production URL:
+
+To be added after deployment.
+
+GitHub Repository:
+
+To be added if required.
+
+## Team Members and Responsibilities
+
+### Sam Khan
+
+* Project planning
+* React development
+* Firebase setup
+* Authentication
+* Firestore database
+* Role-based access
 * Attendance
 * Events
 * Announcements
-* User management
-* Form validation
-* Loading and error states
-* 404 page
-* Unauthorized access
-* Responsive design at 375px
+* Testing
+* Deployment
+
+## Known Limitations
+
+* Dashboard summary information is currently basic.
+* Some existing Firebase records were created during development and testing.
+* Advanced charts and reports are not included.
+
+## Future Improvements
+
+* Attendance charts
+* Search and filtering
+* CSV attendance export
+* Pagination
+* Profile images
+* Automated tests
+* Audit logs
 
 ## Developer
 

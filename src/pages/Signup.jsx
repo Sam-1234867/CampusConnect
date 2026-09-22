@@ -1,6 +1,10 @@
 import { useState } from 'react'
 import { createUserWithEmailAndPassword } from 'firebase/auth'
-import { doc, setDoc } from 'firebase/firestore'
+import {
+  doc,
+  setDoc,
+  serverTimestamp,
+} from 'firebase/firestore'
 import { useNavigate } from 'react-router-dom'
 
 import { useAuth } from '../context/AuthContext'
@@ -13,7 +17,7 @@ function Signup() {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const [role, setRole] = useState('student')
+  const [confirmPassword, setConfirmPassword] = useState('')
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
 
@@ -43,37 +47,61 @@ function Signup() {
     }
 
     if (password.length < 6) {
-      setError('Password must be at least 6 characters.')
+      setError(
+        'Password must be at least 6 characters.'
+      )
+      return
+    }
+
+    if (confirmPassword === '') {
+      setError('Please confirm your password.')
+      return
+    }
+
+    if (password !== confirmPassword) {
+      setError('Passwords do not match.')
       return
     }
 
     setLoading(true)
 
     try {
-      const userCredential = await createUserWithEmailAndPassword(
-        auth,
-        email.trim(),
-        password,
-      )
+      const userCredential =
+        await createUserWithEmailAndPassword(
+          auth,
+          email.trim(),
+          password
+        )
 
       const user = userCredential.user
 
-      await setDoc(doc(db, 'users', user.uid), {
-        name: name.trim(),
-        email: email.trim(),
-        role: role,
-      })
+      await setDoc(
+        doc(db, 'users', user.uid),
+        {
+          name: name.trim(),
+          email: email.trim(),
+          role: 'student',
+          status: 'active',
+          createdAt: serverTimestamp(),
+        }
+      )
 
-      if (role === 'student') {
-        navigate('/student')
-      } else if (role === 'teacher') {
-        navigate('/teacher')
-      } else if (role === 'admin') {
-        navigate('/admin')
-      }
+      navigate('/student')
     } catch (error) {
       console.error(error)
-      setError(error.message)
+
+      if (
+        error.code ===
+        'auth/email-already-in-use'
+      ) {
+        setError(
+          'This email is already registered.'
+        )
+      } else {
+        setError(
+          'Unable to create account. Please try again.'
+        )
+      }
     } finally {
       setLoading(false)
     }
@@ -83,54 +111,81 @@ function Signup() {
     <div>
       <h1>Signup</h1>
 
-      <form onSubmit={handleSignup} noValidate>
+      <form
+        onSubmit={handleSignup}
+        noValidate
+      >
         <div>
-          <label htmlFor="name">Name</label>
+          <label htmlFor="name">
+            Name
+          </label>
+
           <input
             id="name"
             type="text"
             value={name}
-            onChange={(event) => setName(event.target.value)}
+            onChange={(event) =>
+              setName(event.target.value)
+            }
           />
         </div>
 
         <div>
-          <label htmlFor="email">Email</label>
+          <label htmlFor="email">
+            Email
+          </label>
+
           <input
             id="email"
             type="email"
             value={email}
-            onChange={(event) => setEmail(event.target.value)}
+            onChange={(event) =>
+              setEmail(event.target.value)
+            }
           />
         </div>
 
         <div>
-          <label htmlFor="password">Password</label>
+          <label htmlFor="password">
+            Password
+          </label>
+
           <input
             id="password"
             type="password"
             value={password}
-            onChange={(event) => setPassword(event.target.value)}
+            onChange={(event) =>
+              setPassword(event.target.value)
+            }
           />
         </div>
 
         <div>
-          <label htmlFor="role">Role</label>
-          <select
-            id="role"
-            value={role}
-            onChange={(event) => setRole(event.target.value)}
-          >
-            <option value="student">Student</option>
-            <option value="teacher">Teacher</option>
-            <option value="admin">Admin</option>
-          </select>
+          <label htmlFor="confirmPassword">
+            Confirm Password
+          </label>
+
+          <input
+            id="confirmPassword"
+            type="password"
+            value={confirmPassword}
+            onChange={(event) =>
+              setConfirmPassword(
+                event.target.value
+              )
+            }
+          />
         </div>
 
         {error && <p>{error}</p>}
 
-        <button type="submit" disabled={loading}>
-          {loading ? 'Creating account...' : 'Signup'}
+        <button
+          type="submit"
+          disabled={loading}
+        >
+          {loading
+            ? 'Creating account...'
+            : 'Signup'}
         </button>
       </form>
     </div>

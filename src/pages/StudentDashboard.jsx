@@ -1,9 +1,22 @@
+import { useUser } from '../context/UserContext'
+
 function StudentDashboard() {
+  const { userData } = useUser()
+
   return (
-    <div>
+    <main>
       <h1>Student Dashboard</h1>
-      <p>Welcome to the student dashboard.</p>
-    </div>
+
+      <p>
+        Welcome, {userData?.name || 'Student'}.
+      </p>
+
+      <h2>Quick Summary</h2>
+
+      <p>Attendance: View your attendance</p>
+      <p>Events: View upcoming events</p>
+      <p>Announcements: View latest announcements</p>
+    </main>
   )
 }
 
