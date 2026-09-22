@@ -1,16 +1,120 @@
-# React + Vite
+# CampusConnect
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+CampusConnect is a Smart Student Activity and Attendance Management System.
 
-Currently, two official plugins are available:
+## Project Purpose
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+The system helps students, teachers, and administrators manage student activities, attendance, events, and announcements.
 
-## React Compiler
+## Technologies Used
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+* React
+* JavaScript
+* Vite
+* Firebase Authentication
+* Firebase Firestore
+* React Router
+* CSS
 
-## Expanding the ESLint configuration
+## User Roles
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Student
+
+* View student dashboard
+* View attendance
+* View events
+* View announcements
+
+### Teacher
+
+* View teacher dashboard
+* View attendance
+* View events
+* View announcements
+
+### Admin
+
+* View admin dashboard
+* Manage users
+* View user roles
+
+## Main Features
+
+* Email and password authentication
+* Role-based access
+* Protected routes
+* Attendance records
+* Campus events
+* Campus announcements
+* User management
+* Form validation
+* Loading, error, and empty states
+* Responsive design
+* 404 page
+* Unauthorized access page
+
+## Project Structure
+
+```text
+src/
+├── components/
+├── pages/
+├── context/
+├── services/
+├── styles/
+├── App.jsx
+└── main.jsx
+```
+
+## Firebase
+
+Firebase is used for:
+
+* User authentication
+* Firestore database
+* User information
+* Attendance records
+* Events
+* Announcements
+
+## How to Run
+
+Install the project dependencies:
+
+```bash
+npm install
+```
+
+Start the development server:
+
+```bash
+npm run dev
+```
+
+Then open the local URL shown in the terminal.
+
+## Testing
+
+The project was tested for:
+
+* Student login
+* Teacher login
+* Admin login
+* Protected routes
+* Attendance
+* Events
+* Announcements
+* User management
+* Form validation
+* Loading and error states
+* 404 page
+* Unauthorized access
+* Responsive design at 375px
+
+## Developer
+
+Sam Khan
+
+## Project
+
+CampusConnect — Smart Student Activity and Attendance Management System
