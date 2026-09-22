@@ -216,21 +216,21 @@ Email: `teacher@campusconnect.com`
 
 ### Admin
 
-Email: `admin@campusconnect.com`
+Email: `sam.admin2026@gmail.com`
 
 Passwords are provided separately for testing and are not stored in this README.
 
 ## Deployment
 
-The application is prepared for deployment using Vercel.
+The application is deployed using Vercel.
 
 Production URL:
 
-To be added after deployment.
+https://campus-connect-c6jxj9os9-samkhan.vercel.app/
 
 GitHub Repository:
 
-To be added if required.
+https://github.com/Sam-1234867/CampusConnect
 
 ## Team Members and Responsibilities
 
